@@ -1,0 +1,16 @@
+Question:2
+
+Microcontroller unable tp read data from sensor MPU6050 possible reson are:
+
+1.The MPU 6050 board is set to sleep mode by default.
+  Add library for that .
+2.check that you are using the correct I2C address (7-bit vs. 8-bit!)
+3.verify that you indeed use the correct ports
+   no SDA / SCL swap
+   PSoC4 SCB block can only use some fixed pins for I2C
+4.verify that on your board used pins are not connected to anything else 
+5.verify the pull-up resistors (somewhere between 1k and 10k)
+6.use either a oscilloscope or a logic analyzer to verify whats happening 
+  on that lines.
+7.try to reduce your code to the bare minimum, following the code examples
+   and the data sheet, and try to read only the ID register (0x75).
